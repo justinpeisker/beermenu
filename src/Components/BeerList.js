@@ -7,7 +7,7 @@ const BeerList = (props) => {
             <h1> Beer List </h1>
             {props.beers.map(beer => {
                 return(
-                    <div>
+                    <div key= {beer.id}> 
                         <h2> {beer.name} </h2>
                         <img src= {beer.image_url} alt= {`This is an image of beer with a name of ${beer.name}`} />
                         <h3> {beer.tagline} </h3>
