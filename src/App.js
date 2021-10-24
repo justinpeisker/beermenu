@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
 import axios from 'axios';
+import { Route, Link } from 'react-router-dom';
 
 //custom components
 import HomePage from './Components/Home Page';
@@ -22,9 +23,14 @@ function App() {
   }, [])
   return (
     <div className="App">
-      <HomePage />
-      <BeerList />
-      
+      <Link to= '/'> Home </Link>
+      <Link to= '/beerlist'> Beer List </Link>
+      <Route exact path= '/'>
+        <HomePage />
+      </Route>
+      <Route path = '/beerlist'>
+        <BeerList />
+      </Route>
     </div>
   );
 }
