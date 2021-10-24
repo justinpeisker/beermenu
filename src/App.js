@@ -1,23 +1,30 @@
-import logo from './logo.svg';
+import React, {useState, useEffect} from 'react';
 import './App.css';
+import axios from 'axios';
+
+//custom components
+import HomePage from './Components/Home Page';
+import BeerList from './Components/BeerList';
+
 
 function App() {
+  
+  const [beers, setBeers] = useState([])
+
+  useEffect(() => {
+    axios.get('https://api.punkapi.com/v2/beers')
+    .then(res => {
+      console.log(res);
+      setBeers(res.data)
+    }).catch(err => {
+      console.error(err);
+    })
+  }, [])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <HomePage />
+      <BeerList />
+      
     </div>
   );
 }
