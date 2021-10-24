@@ -6,6 +6,7 @@ import { Route, Link } from 'react-router-dom';
 //custom components
 import HomePage from './Components/Home Page';
 import BeerList from './Components/BeerList';
+import Profile from './Components/Profile';
 
 const initialBeer = {
   name: 'homebrew',
@@ -33,11 +34,14 @@ function App() {
           <Link to= '/beerlist'> Beer List </Link>
         </nav>
       </header>
-      <Route exact path= '/'>
-        <HomePage />
+      <Route path= '/profile'>
+            <Profile beers= {beers}/>
       </Route>
       <Route path = '/beerlist'>
         <BeerList beers = {beers}/>
+      </Route>
+      <Route exact path= '/'>
+        <HomePage />
       </Route>
     </div>
   );
