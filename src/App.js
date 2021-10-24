@@ -7,6 +7,10 @@ import { Route, Link } from 'react-router-dom';
 import HomePage from './Components/Home Page';
 import BeerList from './Components/BeerList';
 
+const initialBeer = {
+  name: 'homebrew',
+}
+
 
 function App() {
   
@@ -15,21 +19,25 @@ function App() {
   useEffect(() => {
     axios.get('https://api.punkapi.com/v2/beers')
     .then(res => {
-      console.log(res);
-      setBeers(res.data)
+      console.log(res.data);
+      setBeers([...beers, ...res.data])
     }).catch(err => {
       console.error(err);
     })
   }, [])
   return (
     <div className="App">
-      <Link to= '/'> Home </Link>
-      <Link to= '/beerlist'> Beer List </Link>
+      <header>
+        <nav>
+          <Link to= '/'> Home </Link>
+          <Link to= '/beerlist'> Beer List </Link>
+        </nav>
+      </header>
       <Route exact path= '/'>
         <HomePage />
       </Route>
       <Route path = '/beerlist'>
-        <BeerList />
+        <BeerList beers = {beers}/>
       </Route>
     </div>
   );
