@@ -34,7 +34,7 @@ function App() {
           <Link to= '/beerlist'> Beer List </Link>
         </nav>
       </header>
-      <Route path= '/profile'>
+      <Route path= '/profile/:id'>
             <Profile beers= {beers}/>
       </Route>
       <Route path = '/beerlist'>
