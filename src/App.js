@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './App.css';
 import axios from 'axios';
 import { Route, Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 //custom components
 import HomePage from './Components/Home Page';
